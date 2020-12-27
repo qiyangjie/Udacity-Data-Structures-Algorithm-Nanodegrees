@@ -1,67 +1,10 @@
 import sys
 from collections import Counter
 
-
-class Node:
-    def __init__(self, character, frequency):
-        self.character = character
-        self.frequency = frequency
-        self.left = None
-        self.right = None
-
-    def is_leaf_node(self):
-        return self.left is None and self.right is None
-
-    def __add__(self, other):
-        new_node = Node(None, self.frequency + other.frequency)
-        new_node.left = self
-        new_node.right = other
-        return new_node
-
-    def __lt__(self, other):
-        if other is None:
-            return -1
-        if not isinstance(other, Node):
-            return -1
-
-        return self.frequency < other.frequency
-
-    def __repr__(self):
-        return "('{}', {})".format(self.character, self.frequency)
+from problem_3 import Node, Tree, pre_order, huffman_decoding
 
 
-class Tree:
-    def __init__(self, node):
-        self.root = node
-
-    def get_root(self):
-        return self.root
-
-
-def pre_order(root_node):
-    code = ''
-    huffman_dict = dict()
-
-    def traverse(node, current_code):
-
-        if node:
-            if node.is_leaf_node():
-                huffman_dict[node.character] = current_code
-            else:
-                # traverse left subtree
-                left_code = current_code + '0'
-                traverse(node.left, left_code)
-
-                # traverse right subtree
-                right_code = current_code + '1'
-                traverse(node.right, right_code)
-
-    traverse(root_node, code)
-
-    return huffman_dict
-
-
-def huffman_encoding(data):
+def huffman_encoding_1(data):
     # 1. Determine the frequency of each character in the message
     # Counter is a subclass of dict
     char_counter = Counter(data)
@@ -88,29 +31,6 @@ def huffman_encoding(data):
     return encode_data, huffman_tree
 
 
-def huffman_decoding(data, tree):
-    decode = ''
-    current_node = tree.get_root()
-    for bit in data:
-        if bit is '0':
-            if current_node.left is None:
-                decode += current_node.character
-                current_node = tree.get_root()
-
-            current_node = current_node.left
-
-        if bit is '1':
-            if current_node.right is None:
-                decode += current_node.character
-                current_node = tree.get_root()
-
-            current_node = current_node.right
-
-    decode += current_node.character
-
-    return decode
-
-
 if __name__ == "__main__":
 
     a_great_sentence = "The bird is the word"
@@ -118,7 +38,7 @@ if __name__ == "__main__":
     print("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
     print("The content of the data is: {}\n".format(a_great_sentence))
 
-    encoded_data, tree = huffman_encoding(a_great_sentence)
+    encoded_data, tree = huffman_encoding_1(a_great_sentence)
 
     print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
     print ("The content of the encoded data is: {}\n".format(encoded_data))
