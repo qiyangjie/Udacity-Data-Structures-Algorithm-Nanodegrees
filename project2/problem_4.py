@@ -32,7 +32,15 @@ def is_user_in_group(user, group):
       user(str): user name/id
       group(class:Group): group to check user membership against
     """
-    return None
+
+    if user in group.get_users():
+        return True
+
+    if len(group.get_groups()) > 0:
+        for sub_group in group.get_groups():
+            if is_user_in_group(user, sub_group):
+                return True
+    return False
 
 
 if __name__ == '__main__':
@@ -46,4 +54,5 @@ if __name__ == '__main__':
     child.add_group(sub_child)
     parent.add_group(child)
 
-    print(parent)
+    print(is_user_in_group(sub_child_user, parent))
+    print(is_user_in_group('test_user', parent))
