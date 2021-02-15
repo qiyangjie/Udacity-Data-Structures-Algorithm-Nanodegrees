@@ -35,9 +35,21 @@ Question:
 
 Problem 3
 
+For this problem , I just follow the instruction provided. 
+1. Huffman encode\
+   a. I utilized Counter to preserve each character, as it is efficient to sort by frequency O(n log n).\
+   b. Create the node list using heapq, heapq push and pop are O(log n)\
+   c. Store all element to heapq. -> O(n log n)\
+   d. The time complexity of pre-order traversal is O(n)
+   e. Overall time complexity is O(n log n)
+   
+2. Huffman decode
+   a. Traverse the tree to decode. Time complexity is O(n).
+
 
 
 Problem 4
+
 I go through all sub-groups to find whether a user in.
 
 The time complexity is O(n)
@@ -46,6 +58,7 @@ Question:
 1. Is there any better data structure or algorithm should I use?
 
 Problem 5
+
 The question looks like implementing a linked list.
 Is this what I should do?
 
@@ -58,6 +71,7 @@ Question:
    Why a linked list is used here? 
    We have better choices, isn't it?
    
+
 Problem 6:
 1. Union Function\
    a. Read all element from linked list 1 to union list. O(n)\
