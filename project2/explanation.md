@@ -19,5 +19,20 @@ Time complexity:
    c. popitem()->O(1)\
    d. overall->O(1)
    
+Question:
+1. Any better data structure should I use?
+   
 Problem 2
+
+The only idea I have for this question is go through all the directories
+and find all qualified files.
+
+The time complexity is O(n).
+
+Question:
+1. Is there any better data structure or algorithm should I use?
+
+Problem 3
+
+
    

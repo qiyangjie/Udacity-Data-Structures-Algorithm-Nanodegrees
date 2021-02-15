@@ -32,3 +32,5 @@ def find_files(suffix, path):
 
 if __name__ == '__main__':
     print(find_files('.c', 'testdir'))
+    print(find_files('.h', 'testdir'))
+    print(find_files('.py', 'testdir'))
