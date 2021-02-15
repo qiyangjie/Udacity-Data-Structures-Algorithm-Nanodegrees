@@ -8,19 +8,25 @@ class LRU_Cache(object):
         self.capacity = capacity
 
     def get(self, key):
-        # Retrieve item from provided key. Return -1 if nonexistent.
+        # Retrieve item from provided key.
         if key in self.cache:
             self.cache.move_to_end(key)
             return self.cache[key]
         else:
+            # Return -1 if nonexistent.
             return -1
 
     def set(self, key, value):
-        # Set the value if the key is not present in the cache. If the cache is at capacity remove the oldest item.
-        self.cache[key] = value
-        self.cache.move_to_end(key)
-        if len(self.cache) > self.capacity:
-            self.cache.popitem(last=False)
+        # If the key is in the cache
+        if key in self.cache:
+            self.cache[key] = value
+            self.cache.move_to_end(key)
+        else:
+            # If the cache is at capacity remove the oldest item.
+            if len(self.cache) > self.capacity - 1:
+                self.cache.popitem(last=False)
+            # Set the value if the key is not present in the cache.
+            self.cache[key] = value
 
 
 if __name__ == '__main__':
@@ -38,5 +44,4 @@ if __name__ == '__main__':
     our_cache.set(5, 5)
     our_cache.set(6, 6)
 
-    print(
-        our_cache.get(3))  # returns -1 because the cache reached it's capacity and 3 was the least recently used entry
+    print(our_cache.get(3)) # returns -1 because the cache reached it's capacity and 3 was the least recently used entry
