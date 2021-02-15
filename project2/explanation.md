@@ -32,7 +32,49 @@ The time complexity is O(n).
 Question:
 1. Is there any better data structure or algorithm should I use?
 
+
 Problem 3
 
 
+
+Problem 4
+I go through all sub-groups to find whether a user in.
+
+The time complexity is O(n)
+
+Question:
+1. Is there any better data structure or algorithm should I use?
+
+Problem 5
+The question looks like implementing a linked list.
+Is this what I should do?
+
+The time complexity for append function is O(n)
+
+Question:
+1. If the blockchain use a linked list, 
+   when there are many nodes in the chain, 
+   even add a node use significant time. 
+   Why a linked list is used here? 
+   We have better choices, isn't it?
+   
+Problem 6:
+1. Union Function\
+   a. Read all element from linked list 1 to union list. O(n)\
+   b. Read all element from linked list 2 to union list. O(n)\
+   c. Remove duplications by convert list to set. O(n)\
+   d. Convert set to linked list and output. O(n)\
+   e. Overall, O(n)
+
+2. Intersection Function\
+   a. Read all element from linked list 1 to list 1. O(n)\
+   b. Read all element from linked list 2 to list 1. O(n)\
+   c. Remove duplications by convert list to set. O(n)\
+   d. Iterate elements in list 1, check whether it is in list 2. O(n^2)\
+   e. Transfer list to linked list. O(n)
+   f. Overall O(n^2)
+   
+Question:
+   1. Is convert list to set is a proper method to remove duplication?
+   2. Is there any better way to do those functions?
    

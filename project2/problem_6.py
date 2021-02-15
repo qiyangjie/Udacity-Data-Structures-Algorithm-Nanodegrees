@@ -57,7 +57,7 @@ def union(llist_1, llist_2):
         current_node = current_node.next
 
     # remove the duplications
-    union_list = list(set(union_list))
+    union_list = set(union_list)
 
     # Configure the output as linked list
     output_list = LinkedList()
