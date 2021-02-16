@@ -47,9 +47,9 @@ For this problem , I just follow the instruction provided.
    a. I utilized Counter to preserve each character, as it is efficient to sort by frequency O(n log n).\
    b. Create the node list using heapq, heapq push and pop are O(log n)\
    c. Store all element to heapq. -> O(n log n)\
-   d. The time complexity of pre-order traversal is O(n)
+   d. The time complexity of pre-order traversal is O(n), the space complexity is O(n^2)
    e. Overall time complexity is O(n log n)
-   f. Overall space complexity is O(n)
+   f. Overall space complexity is O(n^2)
    
 2. Huffman decode
    a. Traverse the tree to decode. Time complexity is O(n).
