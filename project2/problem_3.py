@@ -43,10 +43,12 @@ def pre_order(root_node):
     huffman_dict = dict()
 
     def traverse(node, current_code):
-
         if node:
             if node.is_leaf_node():
-                huffman_dict[node.char] = current_code
+                if current_code is '':
+                    huffman_dict[node.char] = '0'
+                else:
+                    huffman_dict[node.char] = current_code
             else:
                 # traverse left subtree
                 left_code = current_code + '0'
@@ -62,58 +64,71 @@ def pre_order(root_node):
 
 
 def huffman_encoding(data):
-    # 1. Determine the frequency of each character in the message
-    # Counter is a subclass of dict
-    char_counter = Counter(data)
-    # 2. Sort by frequency from least common
-    char_list = char_counter.most_common()[::-1]
-    # create the node list
-    node_heapq = []
-    for (char, freq) in char_list:
-        heapq.heappush(node_heapq, Node(char, freq))
+    if data is '':
+        print("empty inputs")
+        return None, None
+    else:
+        # 1. Determine the frequency of each character in the message
+        # Counter is a subclass of dict
+        char_counter = Counter(data)
+        # 2. Sort by frequency from least common
+        char_list = char_counter.most_common()[::-1]
+        # create the node list
+        node_heapq = []
+        for (char, freq) in char_list:
+            heapq.heappush(node_heapq, Node(char, freq))
 
-    # add to list and sort
-    while len(node_heapq) > 1:
-        # 3 and 4 Pop-out two nodes with mini frequency and configure new nodes
-        new_node = heapq.heappop(node_heapq) + heapq.heappop(node_heapq)
-        # Make our list work as a priority queue
-        heapq.heappush(node_heapq, new_node)
+        # add to list and sort
+        while len(node_heapq) > 1:
+            # 3 and 4 Pop-out two nodes with mini frequency and configure new nodes
+            new_node = heapq.heappop(node_heapq) + heapq.heappop(node_heapq)
+            # Make our list work as a priority queue
+            heapq.heappush(node_heapq, new_node)
 
-    huffman_tree = Tree(node_heapq.pop())
-    huffman_dict = pre_order(huffman_tree.get_root())
+        huffman_tree = Tree(node_heapq.pop())
+        huffman_dict = pre_order(huffman_tree.get_root())
 
-    encode_data = ''
-    for char in data:
-        encode_data += huffman_dict[char]
+        encode_data = ''
+        for char in data:
+            encode_data += huffman_dict[char]
 
-    return encode_data, huffman_tree
+        if encode_data is '':
+            print("Only one char, not make sense to use huffman encode")
+
+        return encode_data, huffman_tree
 
 
 def huffman_decoding(data, tree):
-    decode = ''
-    current_node = tree.get_root()
-    for bit in data:
-        if bit is '0':
-            if current_node.left is None:
-                decode += current_node.char
-                current_node = tree.get_root()
+    if data is None or tree is None:
+        print("Please given right inputs")
+        return
+    else:
+        decode = ''
+        current_node = tree.get_root()
+        for bit in data:
+            if bit is '0':
+                if current_node.left is None:
+                    decode += current_node.char
+                    current_node = tree.get_root()
+                if not current_node.is_leaf_node():
+                    current_node = current_node.left
 
-            current_node = current_node.left
+            if bit is '1':
+                if current_node.right is None:
+                    decode += current_node.char
+                    current_node = tree.get_root()
 
-        if bit is '1':
-            if current_node.right is None:
-                decode += current_node.char
-                current_node = tree.get_root()
+                current_node = current_node.right
 
-            current_node = current_node.right
+        decode += current_node.char
 
-    decode += current_node.char
-
-    return decode
+        return decode
 
 
 if __name__ == "__main__":
 
+    # test 1
+    print("test 1")
     a_great_sentence = "The bird is the word"
 
     print("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
@@ -128,3 +143,31 @@ if __name__ == "__main__":
 
     print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
     print ("The content of the encoded data is: {}\n".format(decoded_data))
+
+    # test 2
+    print("test 2")
+    test_sentence_2 = "AAAAA"
+    print("The size of the data is: {}\n".format(sys.getsizeof(test_sentence_2)))
+    print("The content of the data is: {}\n".format(test_sentence_2))
+
+    encoded_data, tree = huffman_encoding(test_sentence_2)
+    print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
+    print ("The content of the encoded data is: {}\n".format(encoded_data))
+
+    decoded_data = huffman_decoding(encoded_data, tree)
+
+    print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
+    print ("The content of the encoded data is: {}\n".format(decoded_data))
+
+
+    # test
+    print("test 3")
+    test_sentence_3 = ""
+    print("The content of the data is: {}\n".format(test_sentence_3))
+
+    encoded_data, tree = huffman_encoding(test_sentence_3)
+
+    decoded_data = huffman_decoding(encoded_data, tree)
+
+    print("The content of the encoded data is: {}\n".format(decoded_data))
+

@@ -54,5 +54,14 @@ if __name__ == '__main__':
     child.add_group(sub_child)
     parent.add_group(child)
 
+    # Test 1
     print(is_user_in_group(sub_child_user, parent))
+
+    # Test 2
+    print(is_user_in_group('', parent))
+
+    # Test 3
     print(is_user_in_group('test_user', parent))
+
+    # Test 4
+    print(is_user_in_group(None, parent))

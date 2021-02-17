@@ -31,7 +31,7 @@ class BlockChain:
     def __init__(self):
         self.head = None
 
-    def append(self, value):
+    def append(self, value=None):
         if self.head is None:
             self.head = Block(value, 0)
             return
@@ -44,6 +44,7 @@ class BlockChain:
 
 
 if __name__ == '__main__':
+    # Test 1
     myChain = BlockChain()
     myChain.append("information 1")
     myChain.append("information 2")
@@ -52,3 +53,24 @@ if __name__ == '__main__':
     print(myChain.head)
     print(myChain.head.next)
     print(myChain.head.next.next)
+
+    # Test 2
+    myChain = BlockChain()
+    myChain.append()
+    myChain.append("information 2")
+    myChain.append("information 3")
+
+    print(myChain.head)
+    print(myChain.head.next)
+    print(myChain.head.next.next)
+
+    # Test 3
+    myChain = BlockChain()
+    myChain.append()
+    myChain.append()
+    myChain.append()
+
+    print(myChain.head)
+    print(myChain.head.next)
+    print(myChain.head.next.next)
+
