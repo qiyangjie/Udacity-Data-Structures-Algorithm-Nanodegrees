@@ -1,0 +1,4 @@
+- Utilize Binary Search
+- Time complexity is O(log(n))
+- Space complexity is O(1)
+
