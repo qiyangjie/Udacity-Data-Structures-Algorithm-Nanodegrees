@@ -40,6 +40,12 @@ def rearrange_digits(input_list):
        (int),(int): Two maximum sums
     """
 
+    if len(input_list) <= 0:
+        return -1, -1
+
+    if len(input_list) == 1:
+        return input_list[0], 0
+
     quicksort(input_list)
 
     # num1 is bigger
@@ -74,3 +80,6 @@ def test_function(test_case):
 if __name__ == '__main__':
     test_function([[1, 2, 3, 4, 5], [542, 31]])
     test_function([[4, 6, 2, 5, 9, 8], [964, 852]])
+    # corner case
+    test_function([[], [-1, -1]])
+    test_function([[3], [3, 0]])

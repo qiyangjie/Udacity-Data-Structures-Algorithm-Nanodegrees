@@ -98,6 +98,9 @@ def rotated_array_search(input_list, number):
     Returns:
        int: Index or -1
     """
+    if not number or not input_list:
+        return -1
+
     return rotated_array_search_recursive(input_list, number, 0, len(input_list)-1)
 
 
@@ -123,3 +126,7 @@ if __name__ == '__main__':
     test_function([[6, 7, 8, 1, 2, 3, 4], 8])
     test_function([[6, 7, 8, 1, 2, 3, 4], 1])
     test_function([[6, 7, 8, 1, 2, 3, 4], 10])
+    # corner
+    test_function([[], None])
+    test_function([[], 2])
+    test_function([[-6, -5, -3, -10, -9, -8], -3])
