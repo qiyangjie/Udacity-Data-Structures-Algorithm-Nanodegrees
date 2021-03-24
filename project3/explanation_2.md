@@ -1,6 +1,6 @@
-Besides with the linear method, the way I can think
-about for search and find is utilizing the divide and
-conquer, which is great for this question. 
+No specific data structure needed. The intuitive method is 
+the linear method. To achieve better time complexity,
+divide and conquer method is used. 
   
 
 - Time complexity is O(log(n))

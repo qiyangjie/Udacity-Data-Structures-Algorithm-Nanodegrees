@@ -1,3 +1,7 @@
+The key to solve this problem is sort method. Two most common
+sorted methods, quick sort and merge sort, were considered, I
+use quick sort as it shows better space complexity.
+
 - First quick sort
 - Time complexity is O(nlog(n))
 - Space complexity is O(1)
