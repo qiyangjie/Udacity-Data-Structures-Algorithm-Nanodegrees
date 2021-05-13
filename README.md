@@ -3,6 +3,7 @@
 ## Introduction
 ## Materials
 ## Project 1
+### Problem 1
 ## Project 2
 ## Project 3
 
