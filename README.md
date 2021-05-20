@@ -1,18 +1,6 @@
-# Udacity Data Structures&Algorithm Nanodegrees Projects
-
+# Udacity Data Structures and Algorithm Projects
 ## Introduction
-## Materials
-## Project 1
-### Problem 1
-### Problem 2
-### Problem 3
-## Project 2
-# Problem 1
-# Problem 2
-# Problem 3
-## Project 3
-# Problem 1
-
-## Conclution
+The code here is what I made follow the instruction of Udacity Data Structures and Algorithm courses.
 
 ## License
+
